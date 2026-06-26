@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary:    #08090F;
+  --color-bg-secondary:  #0D0F1A;
+  --color-bg-tertiary:   #12141F;
+  --color-border:        rgba(255,255,255,0.06);
+  --color-border-bright: rgba(255,255,255,0.12);
+  --color-text-primary:  #F0F0F5;
+  --color-text-secondary:#9CA3AF;
+  --color-text-muted:    #6B7280;
+  --color-accent:        #3B82F6;
+  --color-accent-glow:   #60A5FA;
+  --color-success:       #10B981;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", Menlo, monospace;
+
+  --radius-chip:    4px;
+  --radius-btn:     8px;
+  --radius-card:    14px;
+  --radius-card-lg: 20px;
+}
+
+/* ── Primary colour system ─────────────────────────────────────────────────
+   Change --p / --p-rgb here and the entire site updates automatically.
+   Current theme: Gold / Amber
+   To switch to blue:  --p:#3B82F6  --p-light:#60A5FA  --p-dark:#2563EB  --p-rgb:59,130,246
+   To switch to teal:  --p:#06B6D4  --p-light:#67E8F9  --p-dark:#0891B2  --p-rgb:6,182,212
+────────────────────────────────────────────────────────────────────────── */
+:root {
+  --p:             #F59E0B;
+  --p-light:       #FBBF24;
+  --p-dark:        #D97706;
+  --p-rgb:         245, 158, 11;
+  --p-faint:       rgba(245, 158, 11, 0.07);
+  --p-subtle:      rgba(245, 158, 11, 0.12);
+  --p-glow:        rgba(245, 158, 11, 0.18);
+  --p-border:      rgba(245, 158, 11, 0.25);
+  --p-border-strong: rgba(245, 158, 11, 0.50);
+}
+
+*, *::before, *::after { box-sizing: border-box; cursor: none !important; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #08090F;
+  color: #F0F0F5;
+  font-family: "Inter", system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Stacking sections — each one covers the previous as you scroll */
+section {
+  position: sticky;
+  top: 0;
+  min-height: 100vh;
+  background-color: #08090F;
+}
+
+section:nth-child(1) { z-index: 1; }
+section:nth-child(2) { z-index: 2; box-shadow: 0 -8px 40px rgba(0,0,0,0.6); }
+section:nth-child(3) { z-index: 3; box-shadow: 0 -8px 40px rgba(0,0,0,0.6); }
+section:nth-child(4) { z-index: 4; box-shadow: 0 -8px 40px rgba(0,0,0,0.6); }
+section:nth-child(5) { z-index: 5; box-shadow: 0 -8px 40px rgba(0,0,0,0.6); }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #08090F; }
+::-webkit-scrollbar-thumb { background: rgba(59,130,246,0.3); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #3B82F6; }
+
+::selection { background: rgba(59,130,246,0.25); color: #F0F0F5; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
