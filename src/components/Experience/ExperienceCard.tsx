@@ -16,7 +16,7 @@ const ACCENTS: Record<string, { from: string; to: string; glow: string; initials
   'exp-4': { from: '#F59E0B', to: '#FCD34D', glow: 'rgba(245,158,11,0.18)',  initials: 'MT' },
 }
 
-export default function ExperienceCard({ exp, index, visible }: Props) {
+export default function ExperienceCard({ exp, visible }: Props) {
   const ac = ACCENTS[exp.id] ?? ACCENTS['exp-1']
 
   return (

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, FileText, Menu } from 'lucide-react'
 import { GithubIcon, LinkedinIcon, TwitterXIcon } from './ui/BrandIcons'
