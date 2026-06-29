@@ -63,7 +63,7 @@ export default function Navigation() {
     >
       <div
         className="mx-auto flex items-center justify-between px-6 h-16"
-        style={{ maxWidth: 1400 }}
+        style={{ maxWidth: 'min(1400px, 90vw)' }}
       >
         {/* ── Desktop nav links (left-aligned) ── */}
         <nav className="hidden md:flex items-center gap-1">

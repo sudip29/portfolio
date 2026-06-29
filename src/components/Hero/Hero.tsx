@@ -33,7 +33,7 @@ export default function Hero() {
       {/* Main layout */}
       <div
         className="relative z-10 w-full mx-auto flex items-center px-5 sm:px-8 lg:px-12 2xl:px-16"
-        style={{ maxWidth: 1400, minHeight: '100vh', paddingTop: 72 }}
+        style={{ maxWidth: 'min(1400px, 90vw)', minHeight: '100vh', paddingTop: 72 }}
       >
         {/* Left: text */}
         <div className="w-full lg:w-[50%] 2xl:w-[48%] flex-shrink-0">

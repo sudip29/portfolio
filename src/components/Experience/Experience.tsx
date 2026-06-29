@@ -74,7 +74,7 @@ export default function Experience() {
       <div className="absolute pointer-events-none" style={{ top: '5%', right: '-8%', width: '45%', height: '55%', background: 'radial-gradient(ellipse, var(--p-faint) 0%, transparent 70%)' }} />
       <div className="absolute pointer-events-none" style={{ bottom: '10%', left: '-5%', width: '35%', height: '45%', background: 'radial-gradient(ellipse, rgba(var(--p-rgb), 0.05) 0%, transparent 70%)' }} />
 
-      <div className="relative z-10 mx-auto w-full px-4 sm:px-6 2xl:px-12" style={{ maxWidth: 1400 }}>
+      <div className="relative z-10 mx-auto w-full px-4 sm:px-6 2xl:px-12" style={{ maxWidth: 'min(1400px, 90vw)' }}>
 
         {/* Heading */}
         <div ref={ref} className="mb-6 md:mb-8">

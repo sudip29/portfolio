@@ -24,7 +24,7 @@ export default function Projects() {
         background: 'radial-gradient(ellipse, rgba(var(--p-rgb), 0.05) 0%, transparent 70%)',
       }} />
 
-      <div className="relative z-10 mx-auto w-full px-4 sm:px-6 2xl:px-12" style={{ maxWidth: 1400 }}>
+      <div className="relative z-10 mx-auto w-full px-4 sm:px-6 2xl:px-12" style={{ maxWidth: 'min(1400px, 90vw)' }}>
         <div ref={ref} className="mb-10 md:mb-16">
           <motion.p
             initial={{ opacity: 0, x: -16 }}

@@ -178,7 +178,7 @@ export default function Contact() {
 
       <footer
         className="mt-20 w-full mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3"
-        style={{ borderTop: '1px solid rgba(255,255,255,0.06)', maxWidth: 1400, marginLeft: 'auto', marginRight: 'auto' }}
+        style={{ borderTop: '1px solid rgba(255,255,255,0.06)', maxWidth: 'min(1400px, 90vw)', marginLeft: 'auto', marginRight: 'auto' }}
       >
         <p className="text-xs font-mono" style={{ color: '#6B7280' }}>
           {personal.footer.credit}
