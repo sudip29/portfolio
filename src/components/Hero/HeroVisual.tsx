@@ -1,21 +1,4 @@
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
-
-/* ── live counter that ticks up ── */
-function LiveCounter({ target, duration = 2000, suffix = '' }: { target: number; duration?: number; suffix?: string }) {
-  const [val, setVal] = useState(0)
-  useEffect(() => {
-    let start = 0
-    const step = target / (duration / 16)
-    const id = setInterval(() => {
-      start += step
-      if (start >= target) { setVal(target); clearInterval(id) }
-      else setVal(Math.floor(start))
-    }, 16)
-    return () => clearInterval(id)
-  }, [target, duration])
-  return <>{val.toLocaleString()}{suffix}</>
-}
 
 /* ── animated dot flowing along a line from (x1,y1) to (x2,y2) ── */
 function FlowDot({ x1, y1, x2, y2, delay, color = '#F59E0B', dur = 1.8 }: {
@@ -170,7 +153,7 @@ export default function HeroVisual() {
         <motion.g initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.4 }}>
           <foreignObject x={ETL.x - 70} y={ETL.y + 52} width={220} height={36}>
             <div style={{ display: 'flex', gap: 6, justifyContent: 'center' }}>
-              {['Validate', 'Deduplicate', 'Enrich'].map((tag, i) => (
+              {['Validate', 'Deduplicate', 'Enrich'].map((tag) => (
                 <span key={tag} style={{
                   fontSize: 8, fontWeight: 700, fontFamily: 'monospace',
                   padding: '2px 6px', borderRadius: 4,
