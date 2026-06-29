@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "node --eval \"try{require('fs').rmSync('./node_modules/.tmp',{recursive:true,force:true})}catch(e){}\" && tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
