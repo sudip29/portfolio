@@ -3,14 +3,15 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Mail, Copy, Check } from 'lucide-react'
 import { GithubIcon, LinkedinIcon, TwitterXIcon } from '../ui/BrandIcons'
 import { useIntersection } from '../../hooks/useIntersection'
+import { personal } from '../../data/personal'
 
-const EMAIL = 'sudipshaw29@gmail.com'
+const EMAIL = personal.email
 
 const SOCIALS = [
-  { Icon: GithubIcon,   href: 'https://github.com/sudip-007',          label: 'GitHub'   },
-  { Icon: LinkedinIcon, href: 'https://www.linkedin.com/in/sudip-shaw', label: 'LinkedIn' },
-  { Icon: TwitterXIcon, href: 'https://twitter.com',                    label: 'Twitter'  },
-  { Icon: Mail,         href: `mailto:${EMAIL}`,                        label: 'Email'    },
+  { Icon: GithubIcon,   href: personal.socials.github,          label: 'GitHub'   },
+  { Icon: LinkedinIcon, href: personal.socials.linkedin,         label: 'LinkedIn' },
+  { Icon: TwitterXIcon, href: personal.socials.twitter,          label: 'Twitter'  },
+  { Icon: Mail,         href: `mailto:${personal.email}`,        label: 'Email'    },
 ]
 
 export default function Contact() {
@@ -63,7 +64,7 @@ export default function Contact() {
             backgroundClip: 'text',
           }}
         >
-          Let's Build Something Together
+          {personal.contact.heading}
         </motion.h2>
 
         <motion.p
@@ -73,7 +74,7 @@ export default function Contact() {
           className="mt-5 text-base leading-relaxed"
           style={{ color: '#9CA3AF', maxWidth: 520 }}
         >
-          I'm currently open to new opportunities and collaborations. Whether it's a data engineering challenge, a fintech product, or an interesting project — I'd love to hear from you.
+          {personal.contact.description}
         </motion.p>
 
         <motion.div
@@ -177,15 +178,17 @@ export default function Contact() {
 
       <footer
         className="mt-20 w-full mx-auto px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-3"
-        style={{ borderTop: '1px solid rgba(255,255,255,0.06)', maxWidth: 1800, marginLeft: 'auto', marginRight: 'auto' }}
+        style={{ borderTop: '1px solid rgba(255,255,255,0.06)', maxWidth: 1400, marginLeft: 'auto', marginRight: 'auto' }}
       >
         <p className="text-xs font-mono" style={{ color: '#6B7280' }}>
-          Designed &amp; built by Sudip Kumar Shaw · 2026
+          {personal.footer.credit}
         </p>
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#10B981' }} />
-          <span className="text-xs font-mono" style={{ color: '#10B981' }}>Available for hire</span>
-        </div>
+        {personal.footer.availableForHire && (
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full animate-pulse" style={{ background: '#10B981' }} />
+            <span className="text-xs font-mono" style={{ color: '#10B981' }}>Available for hire</span>
+          </div>
+        )}
       </footer>
     </section>
   )

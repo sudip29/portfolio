@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { ArrowRight, Mail } from 'lucide-react'
 import { GithubIcon, LinkedinIcon, TwitterXIcon } from '../ui/BrandIcons'
+import { personal } from '../../data/personal'
 
 function MagneticButton({ children, className, style, onClick, onMouseEnter, onMouseLeave }: {
   children: React.ReactNode
@@ -29,7 +30,7 @@ function MagneticButton({ children, className, style, onClick, onMouseEnter, onM
   )
 }
 
-const ROLES = ['Senior Data Engineer', 'SQL Architect', 'ETL Pipeline Builder', 'Database Performance Expert']
+const ROLES = personal.roles
 
 function useTypewriter(words: string[]) {
   const [index, setIndex] = useState(0)
@@ -44,15 +45,11 @@ function useTypewriter(words: string[]) {
   return words[index].substring(0, sub)
 }
 
-const STATS = [
-  { value: '4+', label: 'Years Exp.' },
-  { value: '3',  label: 'DB Platforms' },
-  { value: '100+', label: 'Procedures' },
-]
+const STATS = personal.stats
 const SOCIALS = [
-  { icon: GithubIcon,   href: 'https://github.com/sudip-007',          label: 'GitHub' },
-  { icon: LinkedinIcon, href: 'https://www.linkedin.com/in/sudip-shaw', label: 'LinkedIn' },
-  { icon: TwitterXIcon, href: 'https://twitter.com/',                   label: 'Twitter' },
+  { icon: GithubIcon,   href: personal.socials.github,   label: 'GitHub'   },
+  { icon: LinkedinIcon, href: personal.socials.linkedin,  label: 'LinkedIn' },
+  { icon: TwitterXIcon, href: personal.socials.twitter,   label: 'Twitter'  },
 ]
 
 function scrollTo(id: string) { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }) }
@@ -62,23 +59,6 @@ export default function HeroText() {
 
   return (
     <div className="flex flex-col gap-4 md:gap-5 2xl:gap-6">
-
-      {/* ── Label ── */}
-      <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="flex items-center gap-2.5 md:gap-3"
-      >
-        <div style={{ width: 24, height: 2, background: 'linear-gradient(90deg, #F59E0B, #FBBF24)', borderRadius: 1 }}
-          className="md:w-8" />
-        <span className="text-[10px] sm:text-xs 2xl:text-sm font-mono uppercase tracking-[0.2em] font-semibold"
-          style={{ color: '#F59E0B' }}>
-          Senior Data Engineer
-        </span>
-        <div style={{ width: 24, height: 2, background: 'linear-gradient(90deg, #FBBF24, transparent)', borderRadius: 1 }}
-          className="md:w-8" />
-      </motion.div>
 
       {/* ── Name headline ── */}
       <div>
@@ -98,14 +78,14 @@ export default function HeroText() {
           transition={{ duration: 0.6, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
           style={{
             /* clamp: 28px mobile → 6vw fluid → 112px 2xl+ */
-            fontSize: 'clamp(28px, 6vw, 112px)',
+            fontSize: 'clamp(24px, 4vw, 72px)',
             fontWeight: 900,
             letterSpacing: '-0.03em',
             lineHeight: 1.0,
             color: '#F0F0F5',
           }}
         >
-          Sudip Kumar
+          {personal.firstName}
         </motion.h1>
 
         <motion.h1
@@ -113,7 +93,7 @@ export default function HeroText() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.42, ease: [0.4, 0, 0.2, 1] }}
           style={{
-            fontSize: 'clamp(28px, 6vw, 112px)',
+            fontSize: 'clamp(24px, 4vw, 72px)',
             fontWeight: 900,
             letterSpacing: '-0.03em',
             lineHeight: 1.05,
@@ -123,7 +103,7 @@ export default function HeroText() {
             backgroundClip: 'text',
           }}
         >
-          Shaw.
+          {personal.lastName}.
         </motion.h1>
       </div>
 
@@ -143,18 +123,6 @@ export default function HeroText() {
           transition={{ repeat: Infinity, duration: 1.1 }}
         />
       </motion.div>
-
-      {/* ── Description ── */}
-      <motion.p
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2, duration: 0.5 }}
-        className="text-sm md:text-base 2xl:text-lg"
-        style={{ color: '#9CA3AF', lineHeight: 1.75, maxWidth: 500 }}
-      >
-        4+ years crafting high-performance data systems — stored procedures, ETL pipelines,
-        query optimisation, and cloud architectures across MSSQL, MySQL, and Snowflake.
-      </motion.p>
 
       {/* ── Stats ── */}
       <motion.div
@@ -223,7 +191,7 @@ export default function HeroText() {
           </a>
         ))}
         <span className="text-xs font-mono ml-1 hidden sm:block" style={{ color: '#4B5563' }}>
-          sudipshaw29@gmail.com
+          {personal.email}
         </span>
       </motion.div>
 

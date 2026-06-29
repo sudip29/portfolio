@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import type { SkillCategory } from '../../data/skills'
 
@@ -9,6 +10,66 @@ const CHIP_COLORS = [
   { bg: 'rgba(236,72,153,0.10)',     border: 'rgba(236,72,153,0.25)',      color: '#F9A8D4' },
   { bg: 'rgba(var(--p-rgb), 0.10)',  border: 'rgba(var(--p-rgb), 0.25)',   color: 'var(--p)' },
 ]
+
+/* Simple Icons CDN helper */
+const si = (slug: string, color = 'FFFFFF') =>
+  `https://cdn.simpleicons.org/${slug}/${color}`
+
+/* Devicons CDN helper */
+const di = (name: string, variant = 'original') =>
+  `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${name}/${name}-${variant}.svg`
+
+const LOGOS: Record<string, string> = {
+  /* Databases */
+  'MSSQL':              si('microsoftsqlserver', 'CC2927'),
+  'MySQL':              si('mysql', '4479A1'),
+  'PostgreSQL':         si('postgresql', '4169E1'),
+
+  /* ETL & Integration */
+  'ETL Pipelines':      si('apacheairflow', '017CEE'),
+  'SSIS':               si('microsoft', '0078D4'),
+  'SSRS':               si('microsoftexcel', '217346'),
+  'JDBC':               di('java', 'original'),
+  'REST APIs':          si('postman', 'FF6C37'),
+
+  /* Cloud */
+  'Snowflake':          si('snowflake', '29B5E8'),
+  'Azure (Basics)':     si('microsoftazure', '0078D4'),
+
+  /* Programming */
+  'Python':             si('python', '3776AB'),
+  'JavaScript':         si('javascript', 'F7DF1E'),
+  'Java':               di('java', 'original'),
+  'SQL':                si('sqlite', '003B57'),
+  'Bash':               si('gnubash', '4EAA25'),
+
+  /* Frontend */
+  'ReactJS':            si('react', '61DAFB'),
+  'Spring Boot':        si('springboot', '6DB33F'),
+  'HTML/CSS':           si('html5', 'E34F26'),
+
+  /* Core Expertise */
+  'DB Administration':      si('adminer', '34567C'),
+  'Query Optimisation':     si('dbeaver', '382923'),
+  'Data Mining':            si('apachespark', 'E25A1C'),
+  'Data Processing':        si('apachekafka', '231F20'),
+  'Performance Tuning':     si('prometheus', 'E6522C'),
+  'Advanced MS Excel':      si('microsoftexcel', '217346'),
+}
+
+function SkillLogo({ skill }: { skill: string }) {
+  const [failed, setFailed] = useState(false)
+  const src = LOGOS[skill]
+  if (!src || failed) return null
+  return (
+    <img
+      src={src}
+      alt={skill}
+      onError={() => setFailed(true)}
+      style={{ width: 20, height: 20, objectFit: 'contain', flexShrink: 0, opacity: 0.9 }}
+    />
+  )
+}
 
 interface Props {
   category: SkillCategory
@@ -53,9 +114,10 @@ export default function SkillCard({ category, index, visible }: Props) {
           return (
             <span
               key={item}
-              className="px-3 py-1 text-xs font-medium rounded-full transition-all duration-200"
+              className="flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-full transition-all duration-200"
               style={{ background: c.bg, color: c.color, border: `1px solid ${c.border}` }}
             >
+              <SkillLogo skill={item} />
               {item}
             </span>
           )

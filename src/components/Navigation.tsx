@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, FileText, Menu } from 'lucide-react'
 import { GithubIcon, LinkedinIcon, TwitterXIcon } from './ui/BrandIcons'
+import { personal } from '../data/personal'
 
 const NAV_LINKS = ['Hero', 'Skills', 'Experience', 'Projects', 'Contact'] as const
 type Section = (typeof NAV_LINKS)[number]
@@ -62,7 +63,7 @@ export default function Navigation() {
     >
       <div
         className="mx-auto flex items-center justify-between px-6 h-16"
-        style={{ maxWidth: 1800 }}
+        style={{ maxWidth: 1400 }}
       >
         {/* ── Desktop nav links (left-aligned) ── */}
         <nav className="hidden md:flex items-center gap-1">
@@ -100,9 +101,9 @@ export default function Navigation() {
           {/* Social icons */}
           <div className="hidden sm:flex items-center gap-2">
             {[
-              { Icon: GithubIcon,   href: 'https://github.com/sudip-007',                 label: 'GitHub'   },
-              { Icon: LinkedinIcon, href: 'https://www.linkedin.com/in/sudip-shaw',        label: 'LinkedIn' },
-              { Icon: TwitterXIcon, href: 'https://twitter.com',                           label: 'Twitter'  },
+              { Icon: GithubIcon,   href: personal.socials.github,   label: 'GitHub'   },
+              { Icon: LinkedinIcon, href: personal.socials.linkedin,  label: 'LinkedIn' },
+              { Icon: TwitterXIcon, href: personal.socials.twitter,   label: 'Twitter'  },
             ].map(({ Icon, href, label }) => (
               <motion.a
                 key={label}
@@ -124,7 +125,7 @@ export default function Navigation() {
 
           {/* Resume button */}
           <motion.a
-            href="/resume.pdf"
+            href={personal.resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.02 }}
@@ -195,13 +196,13 @@ export default function Navigation() {
                 </motion.button>
               ))}
               <div className="mt-3 pt-3 flex items-center gap-3" style={{ borderTop: '1px solid #1F1F1F' }}>
-                <a href="https://github.com/sudip-007" target="_blank" rel="noopener noreferrer" aria-label="GitHub" style={{ color: '#71717A' }}>
+                <a href={personal.socials.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" style={{ color: '#71717A' }}>
                   <GithubIcon size={16} />
                 </a>
-                <a href="https://www.linkedin.com/in/sudip-shaw" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style={{ color: '#71717A' }}>
+                <a href={personal.socials.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style={{ color: '#71717A' }}>
                   <LinkedinIcon size={16} />
                 </a>
-                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="ml-auto text-sm px-3 py-1.5 rounded-lg" style={{ color: '#FAFAFA', background: '#111111', border: '1px solid #2A2A2A' }}>
+                <a href={personal.resumeUrl} target="_blank" rel="noopener noreferrer" className="ml-auto text-sm px-3 py-1.5 rounded-lg" style={{ color: '#FAFAFA', background: '#111111', border: '1px solid #2A2A2A' }}>
                   Resume
                 </a>
               </div>

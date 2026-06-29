@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { personal } from '../../data/personal'
 
 interface Props {
   onComplete: () => void
 }
 
-const NAME = 'Sudip Shaw'
+const NAME = personal.name
 const LETTERS = NAME.split('')
 
 export default function LoadingScreen({ onComplete }: Props) {
@@ -67,7 +68,7 @@ export default function LoadingScreen({ onComplete }: Props) {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.4 }}
           >
-            Data &amp; Tech Engineer
+            {personal.title}
           </motion.p>
         </motion.div>
       ) : null}
